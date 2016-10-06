@@ -1,0 +1,13 @@
+#!/bin/bash
+
+BASEDIR=$(dirname $0)
+cd $BASEDIR
+libs=$(ls lib/*.jar)
+sep=
+for lib in $libs; do
+ CLASSPATH=${CLASSPATH}${sep}${lib}
+ sep=:
+done
+echo "classpath is ${CLASSPATH}"
+java -cp ${CLASSPATH} InjectorLib $@
+
